@@ -21,7 +21,8 @@ Built from commit [`c5c418faf5`](https://github.com/maxwu2579/auraplex/commit/c5
 | link-preview | `docker pull ghcr.io/maxwu2579/auraplex-images:link-preview-v5` |
 | print | `docker pull ghcr.io/maxwu2579/auraplex-images:print-v5` |
 | love (Office meetings) | `docker pull ghcr.io/maxwu2579/auraplex-images:love-v5` |
-| whatsapp (Meta API only – for WAHA use the separate image you received) | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5` |
+| **whatsapp – WAHA (use this one)** | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5-waha` |
+| whatsapp – official Meta API only | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5` |
 | prospects-recognizer (optional) | `docker pull ghcr.io/maxwu2579/auraplex-images:prospects-recognizer-v5` |
 | prospect-mail (optional) | `docker pull ghcr.io/maxwu2579/auraplex-images:prospect-mail-v5` |
 
@@ -30,6 +31,8 @@ Upgrading from v4:
 2. Switch **all** images above to v5 together (including the ones new since v4: datalake, process, fulltext, link-preview, print, love) and stop the old front.
 3. Run `upgrade-workspace <workspace uuid> --force` with the v5 tool/workspace image.
 4. Check `/config.json`: `"VERSION":"0.7.426"` and `"RELEASE":"v5"`.
+
+WhatsApp with WAHA: `whatsapp-v5-waha` already contains the WAHA URL, API key and webhook signing secret. Do **not** set `WHATSAPP_PROVIDER`, `WHATSAPP_WAHA_URL`, `WHATSAPP_WAHA_API_KEY` or `WHATSAPP_WAHA_WEBHOOK_SECRET` in compose (that would override them). Still set `ACCOUNTS_URL`, `SECRET`, `QUEUE_CONFIG`, `REGION`, `WHATSAPP_PUBLIC_URL`, `WHATSAPP_ALLOWED_ORIGINS`, a persistent volume at `/var/lib/whatsapp`, and `WHATSAPP_WAHA_WEBHOOK_URL` (an address WAHA can reach, e.g. `http://whatsapp:8098/webhook/waha`). WAHA: `devlikeapro/waha` 2026.6.1 or later, engine WEBJS, `WAHA_API_KEY` = the same key.
 
 Keep object storage (MinIO / S3 / hulylake) and WAHA internal only.
 
