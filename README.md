@@ -3,6 +3,36 @@
 Docker images of [Auraplex](https://github.com/maxwu2579/auraplex), a business platform based on Huly (EPL-2.0).
 All images of one release are built from the same commit and carry the same version.
 
+## v5
+
+Built from commit [`c5c418faf5`](https://github.com/maxwu2579/auraplex/commit/c5c418faf5), version **0.7.426** (footer shows `0.7.426 · v5`).
+
+| Image | Pull |
+|---|---|
+| front | `docker pull ghcr.io/maxwu2579/auraplex-images:front-v5` |
+| server (transactor) | `docker pull ghcr.io/maxwu2579/auraplex-images:server-v5` |
+| workspace | `docker pull ghcr.io/maxwu2579/auraplex-images:workspace-v5` |
+| account | `docker pull ghcr.io/maxwu2579/auraplex-images:account-v5` |
+| collaborator | `docker pull ghcr.io/maxwu2579/auraplex-images:collaborator-v5` |
+| preview | `docker pull ghcr.io/maxwu2579/auraplex-images:preview-v5` |
+| datalake (file service) | `docker pull ghcr.io/maxwu2579/auraplex-images:datalake-v5` |
+| process (card automation) | `docker pull ghcr.io/maxwu2579/auraplex-images:process-v5` |
+| fulltext (search) | `docker pull ghcr.io/maxwu2579/auraplex-images:fulltext-v5` |
+| link-preview | `docker pull ghcr.io/maxwu2579/auraplex-images:link-preview-v5` |
+| print | `docker pull ghcr.io/maxwu2579/auraplex-images:print-v5` |
+| love (Office meetings) | `docker pull ghcr.io/maxwu2579/auraplex-images:love-v5` |
+| whatsapp (Meta API only – for WAHA use the separate image you received) | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5` |
+| prospects-recognizer (optional) | `docker pull ghcr.io/maxwu2579/auraplex-images:prospects-recognizer-v5` |
+| prospect-mail (optional) | `docker pull ghcr.io/maxwu2579/auraplex-images:prospect-mail-v5` |
+
+Upgrading from v4:
+1. Back up the database and storage.
+2. Switch **all** images above to v5 together (including the ones new since v4: datalake, process, fulltext, link-preview, print, love) and stop the old front.
+3. Run `upgrade-workspace <workspace uuid> --force` with the v5 tool/workspace image.
+4. Check `/config.json`: `"VERSION":"0.7.426"` and `"RELEASE":"v5"`.
+
+Keep object storage (MinIO / S3 / hulylake) and WAHA internal only.
+
 ## v4
 
 Built from commit [`875c88cd42`](https://github.com/maxwu2579/auraplex/commit/875c88cd42), version **0.7.426** (footer shows `0.7.426 · v4`).
