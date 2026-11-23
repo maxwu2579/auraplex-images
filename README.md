@@ -5,7 +5,7 @@ All images of one release are built from the same commit and carry the same vers
 
 ## v5
 
-Built from commit [`c5c418faf5`](https://github.com/maxwu2579/auraplex/commit/c5c418faf5), version **0.7.426** (footer shows `0.7.426 · v5`).
+Built from commit [`d893468afd`](https://github.com/maxwu2579/auraplex/commit/d893468afd), version **0.7.426** (footer shows `0.7.426 · v5`).
 
 | Image | Pull |
 |---|---|
@@ -21,8 +21,7 @@ Built from commit [`c5c418faf5`](https://github.com/maxwu2579/auraplex/commit/c5
 | link-preview | `docker pull ghcr.io/maxwu2579/auraplex-images:link-preview-v5` |
 | print | `docker pull ghcr.io/maxwu2579/auraplex-images:print-v5` |
 | love (Office meetings) | `docker pull ghcr.io/maxwu2579/auraplex-images:love-v5` |
-| **whatsapp – WAHA (use this one)** | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5-waha` |
-| whatsapp – official Meta API only | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5` |
+| whatsapp (WAHA or Meta API) | `docker pull ghcr.io/maxwu2579/auraplex-images:whatsapp-v5` |
 | prospects-recognizer (optional) | `docker pull ghcr.io/maxwu2579/auraplex-images:prospects-recognizer-v5` |
 | prospect-mail (optional) | `docker pull ghcr.io/maxwu2579/auraplex-images:prospect-mail-v5` |
 
@@ -32,7 +31,7 @@ Upgrading from v4:
 3. Run `upgrade-workspace <workspace uuid> --force` with the v5 tool/workspace image.
 4. Check `/config.json`: `"VERSION":"0.7.426"` and `"RELEASE":"v5"`.
 
-WhatsApp with WAHA: `whatsapp-v5-waha` already contains the WAHA URL, API key and webhook signing secret. Do **not** set `WHATSAPP_PROVIDER`, `WHATSAPP_WAHA_URL`, `WHATSAPP_WAHA_API_KEY` or `WHATSAPP_WAHA_WEBHOOK_SECRET` in compose (that would override them). Still set `ACCOUNTS_URL`, `SECRET`, `QUEUE_CONFIG`, `REGION`, `WHATSAPP_PUBLIC_URL`, `WHATSAPP_ALLOWED_ORIGINS`, a persistent volume at `/var/lib/whatsapp`, and `WHATSAPP_WAHA_WEBHOOK_URL` (an address WAHA can reach, e.g. `http://whatsapp:8098/webhook/waha`). WAHA: `devlikeapro/waha` 2026.6.1 or later, engine WEBJS, `WAHA_API_KEY` = the same key.
+WhatsApp with WAHA: use `whatsapp-v5` and enter the WAHA URL and administrator key in the app (Settings → Integrations → **Service settings**, keys are write-only). Also set `WHATSAPP_WAHA_ALLOWED_ORIGINS`, `PROSPECTS_AI_ALLOWED_ORIGINS` (on the whatsapp service), `WHATSAPP_WAHA_WEBHOOK_URL`, and `SERVER_SECRET` for prospects-recognizer. WAHA: `devlikeapro/waha` 2026.6.1+ (`:chrome` to receive videos), engine WEBJS. Full notes: v5 release notes.
 
 Keep object storage (MinIO / S3 / hulylake) and WAHA internal only.
 
