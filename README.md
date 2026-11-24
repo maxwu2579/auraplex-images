@@ -7,7 +7,9 @@ All images of one release are built from the same commit and carry the same vers
 
 Built from commit [`d893468afd`](https://github.com/maxwu2579/auraplex/commit/d893468afd), version **0.7.426** (footer shows `0.7.426 · v5`).
 
-> **Update 2026-11-24:** `front-v5` was rebuilt from commit [`5dbf1d68a`](https://github.com/maxwu2579/auraplex/commit/5dbf1d68a) with phone display fixes. Only the front image changed; the other 14 images are the same and no extra workspace upgrade is needed.
+> **Update 2026-11-24:** `front-v5` and `preview-v5` were rebuilt from commit [`b983613d8`](https://github.com/maxwu2579/auraplex/commit/b983613d8): phone / narrow-screen fixes, approvals without a password prompt, and chat image thumbnails (they used to stay blurred). The other 13 images are the same and no extra workspace upgrade is needed.
+>
+> **preview now needs `ACCOUNTS_URL`** (same value as the other services). Without it, image thumbnails stay blurred as before.
 
 | Image | Pull |
 |---|---|
